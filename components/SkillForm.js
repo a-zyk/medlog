@@ -4,12 +4,13 @@ import AbcSelect from "./AbcSelect";
 import validate from "../domain/skillFormErrors";
 import { Button, ErrorWrapper } from "./ui";
 
-const SkillForm = () => {
-  const [abc, setAbc] = useState("");
-  const [patientNum, setPatientNum] = useState("");
-  const [date, setDate] = useState("");
-  const [departament, setDepartament] = useState("");
-  const [skill, setSkill] = useState("");
+const SkillForm = ({skillItem}) => {
+  console.log(skillItem)
+  const [abc, setAbc] = useState(skillItem.abc || "");
+  const [patientNum, setPatientNum] = useState(skillItem.patientNum || "");
+  const [date, setDate] = useState(skillItem.date || "");
+  const [departament, setDepartament] = useState(skillItem.departament ||  "");
+  const [skill, setSkill] = useState(skillItem.skill || "");
   const [errors, setErrors] = useState({});
 
   const onSubmit = (e) => {
@@ -34,6 +35,7 @@ const SkillForm = () => {
           <div>
             <label htmlFor="date">Data</label>
             <input
+            value={date}
               onChange={(e) => setDate(e.target.value)}
               id="date"
               type="date"
@@ -44,6 +46,7 @@ const SkillForm = () => {
           <div>
             <label htmlFor="departament">Padalinys</label>
             <input
+            value={departament}
               onChange={(e) => setDepartament(e.target.value)}
               id="departament"
               type="text"
@@ -58,6 +61,7 @@ const SkillForm = () => {
               Paciento ligos istorijos ar ambulatorinės kortelės Nr.
             </label>
             <input
+            value={patientNum}
               onChange={(e) => setPatientNum(e.target.value)}
               id="patient-num"
               type="text"
@@ -70,12 +74,13 @@ const SkillForm = () => {
           <div>
             <label htmlFor="skill">Gebėjimas</label>
             <select
+            value={skill}
               onChange={(e) => setSkill(e.currentTarget.value)}
               id="skill"
             >
               <option></option>
               {data.map((item) => {
-                return <option key={item.skill}>{item.skill}</option>;
+                return <option value={item.skill} key={item.skill}>{item.skill}</option>;
               })}
             </select>
             {errors.skill ? <ErrorWrapper>Pasirinkite gebėjimą</ErrorWrapper> : null}
@@ -83,7 +88,7 @@ const SkillForm = () => {
 
           <div>
             <label>Savarankiškumo lygis</label>
-            <AbcSelect value={abc} onChange={(e) => setAbc(e.target.value)} />
+            <AbcSelect id={skillItem.id} value={abc} onChange={(e) => setAbc(e.target.value)} />
             {errors.abc ? <ErrorWrapper>Pasirinkite savarankiškumo lygį</ErrorWrapper> : null}
           </div>
         </div>

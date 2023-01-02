@@ -7,7 +7,7 @@ export default function Skills() {
     <>
       <div className="container">
         <Card>
-          <SkillForm />
+          <SkillForm skillItem={{}} />
         </Card>
         <SkillList />
       </div>

@@ -1,6 +1,6 @@
 import fakePatients from "../config/texts/fakePatients.json";
 import { Card, TableItem, TableHeadItem, TableHead, TableBody } from "./ui";
-import { Edit } from "./icons";
+import { Edit, Delete } from "./icons";
 import { useState } from "react";
 import Modal from "./Modal";
 import PatientForm from "./PatientForm";
@@ -14,10 +14,11 @@ const patientList = () => {
         <TableItem>{i + 1}</TableItem>
         <TableItem>{patient.date}</TableItem>
         <TableItem>{patient.patientNum}</TableItem>
-        <TableItem>{patient.TLK_code}</TableItem>
+        <TableItem>{patient.tlkCode}</TableItem>
         <TableItem>{patient.level}</TableItem>
-        <TableItem>
+        <TableItem className="flex gap-4">
           <Edit onClick={() => setEditingPatient(patient)} />
+          <Delete/>
         </TableItem>
       </tr>
     );

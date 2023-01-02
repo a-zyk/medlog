@@ -1,30 +1,34 @@
 [
   {
     "id": 1,
-    "date": "01-01-2022",
+    "date": "2022-01-01",
+    "pathDx" :"Nudegimai, hipertermija",
     "patientNum": "AB-12-X",
-    "TLK_code": "AB-12",
-    "level": "A"
+    "tlkCode": "AB-12",
+    "abc": "A"
   },
   {
     "id": 2,
-    "date": "04-01-2022",
+    "date": "2022-01-04",
+    "pathDx" :"Nudegimai, hipertermija",
     "patientNum": "GX-4-A",
-    "TLK_code": "GD-124",
-    "level": "B"
+    "tlkCode": "GD-124",
+    "abc": "B"
   },
   {
     "id": 3,
-    "date": "10-01-2022",
+    "date": "2022-01-10",
+    "pathDx" :"Nudegimai, hipertermija",
     "patientNum": "AC-432",
-    "TLK_code": "AJ-2",
-    "level": "C"
+    "tlkCode": "AJ-2",
+    "abc": "C"
   },
   {
     "id": 4,
-    "date": "20-01-2022",
+    "date": "2022-01-20",
+    "pathDx" :"Nudegimai, hipotermija",
     "patientNum": "GD-4-ABC",
-    "TLK_code": "28-AJS",
-    "level": "C"
+    "tlkCode": "28-AJS",
+    "abc": "C"
   }
 ]

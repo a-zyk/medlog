@@ -1,4 +1,5 @@
-const AbcSelect = ({ onChange, value, id}) => {
+const AbcSelect = ({ onChange, value, id }) => {
+
   return (
     <div className="grid w-full grid-cols-3 space-x-2 rounded-xl bg-gray-50 border border-gray-300 p-2">
       <div>

@@ -5,18 +5,18 @@ import validate from "../domain/patientFormErrors";
 import { ErrorWrapper, Button } from "./ui";
 
 const PatientForm = ({ patient }) => {
-  const [pathDx, setPathDx] = useState("");
-  const [tlkCode, setTlkCode] = useState("");
-  const [abc, setAbc] = useState("");
-  const [patientNum, setPatientNum] = useState(patient.patientNum ||  "");
-  const [date, setDate] = useState("");
+  const [pathDx, setPathDx] = useState(patient.pathDx || "");
+  const [tlkCode, setTlkCode] = useState(patient.tlkCode || "");
+  const [abc, setAbc] = useState(patient.abc|| "");
+  const [patientNum, setPatientNum] = useState(patient.patientNum || "");
+  const [date, setDate] = useState(patient.date || "");
   const [errors, setErrors] = useState({});
 
   const pathChanged = (e) => {
     const diagnosis = e.currentTarget.value;
     setPathDx(diagnosis);
-    const selectedItem = data.find((item) => item.Path_dx === diagnosis);
-    if (selectedItem) setTlkCode(selectedItem.TLK_code);
+    const selectedItem = data.find((item) => item.pathDx === diagnosis);
+    if (selectedItem) setTlkCode(selectedItem.tlkCode);
   };
 
   const onSubmit = (e) => {
@@ -41,6 +41,7 @@ const PatientForm = ({ patient }) => {
         <div>
           <label htmlFor="date">Data</label>
           <input
+            value={date}
             onChange={(e) => setDate(e.target.value)}
             id="date"
             type="date"
@@ -65,11 +66,14 @@ const PatientForm = ({ patient }) => {
 
         <div>
           <label htmlFor="path-dx">Patologinė diagnozė</label>
-          <select onChange={pathChanged} id="path-dx">
+          
+          <select value={pathDx} onChange={pathChanged} id="path-dx">
             <option></option>
             {data.map((diagnosis) => {
               return (
-                <option key={diagnosis.TLK_code}>{diagnosis.Path_dx}</option>
+                <option value={diagnosis.pathDx} key={diagnosis.tlkCode}>
+                  {diagnosis.pathDx}
+                </option>
               );
             })}
           </select>
@@ -80,13 +84,17 @@ const PatientForm = ({ patient }) => {
 
         <div>
           <label htmlFor="tlk-code">TLK kodas {tlkCode} </label>
-          <input id="tlk-code" type="text" />
+          <input value={tlkCode} id="tlk-code" type="text" />
           {errors.tlk ? <ErrorWrapper>Įveskite TLK kodą</ErrorWrapper> : null}
         </div>
 
         <div>
           <label>Savarankiškumo lygis</label>
-          <AbcSelect id={patient.id} value={abc} onChange={(e) => setAbc(e.target.value)} />
+          <AbcSelect
+            id={patient.id}
+            value={abc}
+            onChange={(e) => setAbc(e.target.value)}
+          />
           {errors.abc ? (
             <ErrorWrapper>Pasirinkite savarankiškumo lygį</ErrorWrapper>
           ) : null}
