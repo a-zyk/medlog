@@ -1,0 +1,82 @@
+ [
+    {
+     "Path_dx": "Galvos ir kaklo sužalojimai",
+     "TLK_code": "S00 - S19, T90",
+     "min_procedures": 15,
+     "A": 12,
+     "B": 3,
+     "C": 0
+    },
+    {
+     "Path_dx": "Skeleto ir kelių kūno sričių sužalojimai",
+     "TLK_code": "S40 – S99, T00 – T07",
+     "min_procedures": 8,
+     "A": 5,
+     "B": 3,
+     "C": 0
+    },
+    {
+     "Path_dx": "Krūtinės ląstos sužalojimai",
+     "TLK_code": "S20 – S29",
+     "min_procedures": 6,
+     "A": 4,
+     "B": 2,
+     "C": 0
+    },
+    {
+     "Path_dx": "Pilvo, juosmens ir dubens sužalojimai",
+     "TLK_code": "S30 -S39",
+     "min_procedures": 8,
+     "A": 5,
+     "B": 3,
+     "C": 0
+    },
+    {
+     "Path_dx": "Nudegimai, hipertermija",
+     "TLK_code": "T20 –T31, T67, T95",
+     "min_procedures": 8,
+     "A": 5,
+     "B": 3,
+     "C": 0
+    },
+    {
+     "Path_dx": "Hipotermija, nušalimai",
+     "TLK_code": "T33-T35, T68",
+     "min_procedures": 3,
+     "A": 2,
+     "B": 1,
+     "C": 0
+    },
+    {
+     "Path_dx": "Kiti ir nepatikslinti išorinių poveikių padariniai",
+     "TLK_code": "T63,T66-T77",
+     "min_procedures": 3,
+     "A": 1,
+     "B": 2,
+     "C": 0
+    },
+    {
+     "Path_dx": "Tam tikros ir ankstyvos traumų komplikacijos",
+     "TLK_code": "T29, T78, T80-T88",
+     "min_procedures": 4,
+     "A": 2,
+     "B": 2,
+     "C": 0
+    },
+    {
+     "Path_dx": "Ūmaus tipo alerginės reakcijos",
+     "TLK_code": "S30 – S33, S35 –S39",
+     "min_procedures": 1,
+     "A": 1,
+     "B": 1,
+     "C": 0
+    },
+    {
+     "Path_dx": "Kritinės neurologinės būklės",
+     "TLK_code": "I60-69, G00-G99",
+     "min_procedures": 6,
+     "A": 4,
+     "B": 2,
+     "C": 0
+    }
+   ]

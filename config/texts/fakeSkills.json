@@ -1,0 +1,30 @@
+[
+  {
+    "date": "01-01-2022",
+    "departament": "Kardiologijos",
+    "patientNum": "AB-12-X",
+    "skill": "Torakotomija",
+    "level": "A"
+  },
+  {
+    "date": "04-01-2022",
+    "departament": "Nefrologijos",
+    "patientNum": "GX-4-A",
+    "skill": "Paciento pervežimas",
+    "level": "B"
+  },
+  {
+    "date": "10-01-2022",
+    "departament": "Gastroenterologijos",
+    "patientNum": "AC-432",
+    "skill": "Endoskopija",
+    "level": "C"
+  },
+  {
+    "date": "20-01-2022",
+    "departament": "Vaikų ir akušerijos",
+    "patientNum": "GD-4-ABC",
+    "skill": "Perikardocentezė",
+    "level": "C"
+  }
+]

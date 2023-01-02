@@ -1,0 +1,114 @@
+[
+    {
+     "skill": "“Sunkių”kvėpavimo takų valdymas",
+     "A": 2,
+     "B": 2,
+     "C": 1
+    },
+    {
+     "skill": "Koniotomija",
+     "B": 1,
+     "C": 1
+    },
+    {
+     "skill": "Perkutaninė punkcinė dilatacinė tracheostomija",
+     "A": 1,
+     "B": 1,
+     "C": 1
+    },
+    {
+     "skill": "Pleuros ertmės drenažas",
+     "A": 1,
+     "B": 2,
+     "C": 1
+    },
+    {
+     "skill": "Radiologinių tyrimų rezultatų vertinimas",
+     "A": 5,
+     "B": 7,
+     "C": 1
+    },
+    {
+     "skill": "Pradinė ir tolimesnės pagalba traumos metu. Algoritmo sudarymas.",
+     "A": 4,
+     "B": 5,
+     "C": 1
+    },
+    {
+     "skill": "Hipovoleminio šoko gydymo planavimas",
+     "A": 6,
+     "B": 4,
+     "C": 1
+    },
+    {
+     "skill": "Kraujo ir jo komponentų transfuzija",
+     "A": 7,
+     "B": 5,
+     "C": 1
+    },
+    {
+     "skill": "Infuzoterapijos planavimas nudegus",
+     "A": 7,
+     "B": 4,
+     "C": 1
+    },
+    {
+     "skill": "Paciento transportavimas",
+     "A": 10,
+     "B": 3,
+     "C": 1
+    },
+    {
+     "skill": "Hiperbarinė oksigenacija",
+     "B": 1,
+     "C": 1
+    },
+    {
+     "skill": "Stuburo imobilizacija",
+     "A": 7,
+     "B": 4,
+     "C": 1
+    },
+    {
+     "skill": "Hipotermijos gydymo planavimas",
+     "A": 3,
+     "B": 1,
+     "C": 1
+    },
+    {
+     "skill": "Hipertermijos gydymo planavimas",
+     "A": 3,
+     "B": 2,
+     "C": 1
+    },
+    {
+     "skill": "Intrakranijinio slėgio monitoravimas ir interpretacija",
+     "A": 1,
+     "B": 4,
+     "C": 1
+    },
+    {
+     "skill": "Smegenų mirties diagnostika",
+     "A": 1,
+     "B": 2,
+     "C": 1
+    },
+    {
+     "skill": "Organų donoro ruošimas",
+     "A": 1,
+     "B": 2,
+     "C": 1
+    },
+    {
+     "skill": "Stabligės imunoprofilaktika",
+     "A": 2,
+     "B": 2,
+     "C": 1
+    },
+    {
+     "skill": "Kritinių neurologinių susirgimų gydymo protokolųįvaldymas",
+     "A": 2,
+     "B": 2,
+     "C": 1
+    }
+   ]

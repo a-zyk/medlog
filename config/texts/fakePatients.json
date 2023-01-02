@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "date": "01-01-2022",
+    "patientNum": "AB-12-X",
+    "TLK_code": "AB-12",
+    "level": "A"
+  },
+  {
+    "id": 2,
+    "date": "04-01-2022",
+    "patientNum": "GX-4-A",
+    "TLK_code": "GD-124",
+    "level": "B"
+  },
+  {
+    "id": 3,
+    "date": "10-01-2022",
+    "patientNum": "AC-432",
+    "TLK_code": "AJ-2",
+    "level": "C"
+  },
+  {
+    "id": 4,
+    "date": "20-01-2022",
+    "patientNum": "GD-4-ABC",
+    "TLK_code": "28-AJS",
+    "level": "C"
+  }
+]
