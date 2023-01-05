@@ -1,4 +1,4 @@
-import data from "../config/texts/diagnosis.json";
+import data from "../config/texts/cycleOneDiagnosis.json";
 import { useState } from "react";
 import AbcSelect from "./AbcSelect";
 import validate from "../domain/patientFormErrors";

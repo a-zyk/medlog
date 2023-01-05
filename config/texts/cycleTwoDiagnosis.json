@@ -1,0 +1,24 @@
+[
+    {
+     "pathDx": "Apsinuodijimas narkotikais, vaistais ir biologinėmis medžiagomis",
+     "tlkCode": "T36-T50",
+     "min_procedures": 12,
+     "A": 7,
+     "B": 3,
+     "C": 2
+    },
+    {
+     "pathDx": "Nemedicininės paskirties medžiagų toksinis poveikis ",
+     "tlkCode": "T51-T65",
+     "min_procedures": 4,
+     "A": 2,
+     "B": 1
+    },
+    {
+     "pathDx": "Inkstų nepakankamumas",
+     "tlkCode": "N17-N19",
+     "min_procedures": 5,
+     "A": 2,
+     "B": 2,
+     "C": 1
+    }]

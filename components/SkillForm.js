@@ -1,4 +1,4 @@
-import data from "../config/texts/skills.json";
+import data from "../config/texts/cycleOneSkills.json";
 import { useState } from "react";
 import AbcSelect from "./AbcSelect";
 import validate from "../domain/skillFormErrors";

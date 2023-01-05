@@ -1,0 +1,64 @@
+
+[
+    {
+     "pathDx": "Skrandžio ar dvylikapirštės opa su kraujavimu ar/ir perforacija",
+     "tlkCode": "K25-K26",
+     "min_procedures": 5,
+     "A": 3,
+     "B": 2
+    },
+    {
+     "pathDx": "Ūminis žarnų kraujotakos sutrikimas",
+     "tlkCode": "K55",
+     "min_procedures": 2,
+     "A": 1,
+     "B": 1
+    },
+    {
+     "pathDx": "Žarnų nepraeinamumas",
+     "tlkCode": "K56",
+     "min_procedures": 2,
+     "A": 1,
+     "B": 1
+    },
+    {
+     "pathDx": "Peritonitas",
+     "tlkCode": "K65",
+     "min_procedures": 2,
+     "A": 1,
+     "B": 1
+    },
+    {
+     "pathDx": "Ūminis ar poūmis kepenų nepakankamumas",
+     "tlkCode": "K70-K72",
+     "min_procedures": 4,
+     "A": 2,
+     "B": 2
+    },
+    {
+     "pathDx": "Lėtinis kepenų nepakankamumas",
+     "tlkCode": "K73-K75",
+     "min_procedures": 2,
+     "A": 1,
+     "B": 1
+    },
+    {
+     "pathDx": "Kraujavimas iš stemplės varikozinių venų",
+     "min_procedures": 2,
+     "A": 1,
+     "B": 1
+    },
+    {
+     "pathDx": "Hepatorenalinis sindromas",
+     "tlkCode": "K76.7",
+     "min_procedures": 3,
+     "A": 2,
+     "B": 1
+    },
+    {
+     "pathDx": "Ūminis pankreatitas ",
+     "tlkCode": "K85",
+     "min_procedures": 4,
+     "A": 3,
+     "B": 1
+    }]

@@ -1,0 +1,52 @@
+[
+    {
+     "Skill": "Diagnozuoti inkstų pažeidimą atspindinčius sindromus ir sudaryti pradinį tyrimo bei gydymo planą",
+     "A": 6,
+     "B": 2,
+     "C": 2
+    },
+    {
+     "Skill": "Įvertinti inkstų funkciją pagal glomerulų \nfiltracijos greitį",
+     "A": 6,
+     "B": 2,
+     "C": 2
+    },
+    {
+     "Skill": "Dozuoti vaistus pagal inkstų nepakankamumo laipsnį",
+     "A": 8,
+     "B": 2,
+     "C": 2
+    },
+    {
+     "Skill": "Diagnozuoti urgentinę būklę dėl inkstų funkcijos sutrikimo (hipervolemiją, hiperkalemiją, ureminę intoksikaciją, \nhipertenzinę krizę) ir suteikti neatidėliotiną pagalbą",
+     "A": 6,
+     "B": 2,
+     "C": 2
+    },
+    {
+     "Skill": "Pritaikyti pakaitinės inkstų terapijos metodikas",
+     "A": 1,
+     "B": 8,
+     "C": 1
+    },
+    {
+     "Skill": "Pritaikyti plazmaferezę",
+     "C": 1
+    },
+    {
+     "Skill": "Skrandžio ištuštinimas apsinuodijus ",
+     "A": 12
+    },
+    {
+     "Skill": "Šlapimo šarminimas",
+     "A": 4
+    },
+    {
+     "Skill": "Enterosorbcija",
+     "A": 10
+    },
+    {
+     "Skill": "Detoksikacinė hemodializė",
+     "B": 2,
+     "C": 1
+    }]
