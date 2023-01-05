@@ -8,7 +8,8 @@ const SkillForm = ({skillItem}) => {
   console.log(skillItem)
   const [abc, setAbc] = useState(skillItem.abc || "");
   const [patientNum, setPatientNum] = useState(skillItem.patientNum || "");
-  const [date, setDate] = useState(skillItem.date || "");
+  const currentDate = (new Date()).toISOString().split('T')[0]
+  const [date, setDate] = useState(skillItem.date || currentDate);
   const [departament, setDepartament] = useState(skillItem.departament ||  "");
   const [skill, setSkill] = useState(skillItem.skill || "");
   const [errors, setErrors] = useState({});

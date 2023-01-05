@@ -3,11 +3,11 @@ import Modal from "./Modal";
 import SkillForm from "./SkillForm";
 import { useState } from "react";
 import { Card, TableItem, TableHeadItem, TableHead, TableBody } from "./ui";
-
 import { Edit, Delete } from "./icons";
 
 const skillList = () => {
   const [editingSkill, setEditingSkill] = useState(null);
+  
   const rows = fakeSkills.map((skill, i) => {
     return (
       <tr key={i}>
