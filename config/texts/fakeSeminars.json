@@ -1,0 +1,15 @@
+[
+    {
+      "id": 1,
+      "date": "2022-01-01",
+      "seminar" :"Skeleto ir minkštųjų audinių trauma.",
+      "abc": "A"
+    },
+    {
+      "id": 2,
+      "date": "2022-01-04",
+      "seminar" :"Skeleto ir minkštųjų audinių trauma.",
+      "abc": "B"
+    }
+  ]
+  

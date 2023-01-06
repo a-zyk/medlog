@@ -1,24 +1,22 @@
-import fakeSkills from "../config/texts/fakeSkills.json";
+import fakeSeminars from '../config/texts/fakeSeminars.json'
 import Modal from "./ui/Modal";
-import SkillForm from "./SkillForm";
 import { useState } from "react";
 import { Card, TableItem, TableHeadItem, TableHead, TableBody } from "./ui/ui";
 import { Edit, Delete } from "./ui/icons";
+import SeminarForm from './SeminarForm'
 
-const skillList = () => {
-  const [editingSkill, setEditingSkill] = useState(null);
+const seminarList = () => {
+  const [editingSeminar, setEditingSeminar] = useState(null);
   
-  const rows = fakeSkills.map((skill, i) => {
+  const rows = fakeSeminars.map((seminar, i) => {
     return (
       <tr key={i}>
         <TableItem>{i + 1}</TableItem>
-        <TableItem>{skill.date}</TableItem>
-        <TableItem>{skill.departament}</TableItem>
-        <TableItem>{skill.patientNum}</TableItem>
-        <TableItem>{skill.skill}</TableItem>
-        <TableItem>{skill.abc}</TableItem>
+        <TableItem>{seminar.date}</TableItem>
+        <TableItem>{seminar.seminar}</TableItem>
+        <TableItem>{seminar.abc}</TableItem>
         <TableItem className="flex gap-4">
-          <Edit onClick={() => setEditingSkill(skill)} />
+          <Edit onClick={() => setEditingSeminar(seminar)} />
           <Delete />
         </TableItem>
       </tr>
@@ -34,9 +32,7 @@ const skillList = () => {
               <tr className="text-left">
                 <TableHeadItem>Nr.</TableHeadItem>
                 <TableHeadItem>Data</TableHeadItem>
-                <TableHeadItem>Padalinys</TableHeadItem>
-                <TableHeadItem>Pacientas</TableHeadItem>
-                <TableHeadItem>Gebėjimas</TableHeadItem>
+                <TableHeadItem>Seminaras</TableHeadItem>
                 <TableHeadItem>Lygis</TableHeadItem>
                 <TableHeadItem></TableHeadItem>
               </tr>
@@ -45,13 +41,13 @@ const skillList = () => {
           </table>
         </div>
       </Card>
-      {editingSkill ? (
-        <Modal onModalClose={() => setEditingSkill(null)}>
-          <SkillForm  skillItem={editingSkill} />
+      {editingSeminar ? (
+        <Modal onModalClose={() => setEditingSeminar(null)}>
+          <SeminarForm  seminarItem={editingSeminar} />
         </Modal>
       ) : null}
     </>
   );
 };
 
-export default skillList;
+export default seminarList;

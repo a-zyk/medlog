@@ -1,8 +1,8 @@
-import data from "../config/texts/cycleOneDiagnosis.json";
+import data from "../config/texts/cycleOne/Diagnosis.json";
 import { useState } from "react";
 import AbcSelect from "./AbcSelect";
 import validate from "../domain/patientFormErrors";
-import { ErrorWrapper, Button } from "./ui";
+import { ErrorWrapper, Button } from "./ui/ui";
 
 const PatientForm = ({ patient }) => {
   const [pathDx, setPathDx] = useState(patient.pathDx || "");

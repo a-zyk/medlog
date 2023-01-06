@@ -1,8 +1,8 @@
 import fakePatients from "../config/texts/fakePatients.json";
-import { Card, TableItem, TableHeadItem, TableHead, TableBody } from "./ui";
-import { Edit, Delete } from "./icons";
+import { Card, TableItem, TableHeadItem, TableHead, TableBody } from "./ui/ui";
+import { Edit, Delete } from "./ui/icons";
 import { useState } from "react";
-import Modal from "./Modal";
+import Modal from "./ui/Modal";
 import PatientForm from "./PatientForm";
 
 const patientList = () => {

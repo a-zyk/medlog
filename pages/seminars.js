@@ -1,10 +1,10 @@
-import SkillForm from "../components/SkillForm";
-import SkillList from "../components/SkillList";
 import { Card } from "../components/ui/ui";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Auth, ThemeSupa } from "@supabase/auth-ui-react";
+import SeminarForm from "../components/SeminarForm";
+import SeminarList from "../components/SeminarList";
 
-export default function Skills() {
+export default function Seminars() {
   const user = useUser();
   const supabase = useSupabaseClient();
   if (!user) {
@@ -14,9 +14,10 @@ export default function Skills() {
     <>
       <div className="container">
         <Card>
-          <SkillForm skillItem={{}} />
+          <SeminarForm seminarItem={{}}/>
         </Card>
-        <SkillList />
+        <SeminarList/>
+      
       </div>
     </>
   );

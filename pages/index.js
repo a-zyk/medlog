@@ -1,6 +1,6 @@
 import PatientForm from "../components/PatientForm";
 import PatientList from "../components/PatientList";
-import { Card } from "../components/ui";
+import { Card } from "../components/ui/ui";
 import { Auth, ThemeSupa } from "@supabase/auth-ui-react";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 

@@ -1,8 +1,8 @@
-import data from "../config/texts/cycleOneSkills.json";
+import data from "../config/texts/cycleOne/Skills.json";
 import { useState } from "react";
 import AbcSelect from "./AbcSelect";
 import validate from "../domain/skillFormErrors";
-import { Button, ErrorWrapper } from "./ui";
+import { Button, ErrorWrapper } from "./ui/ui";
 
 const SkillForm = ({skillItem}) => {
   console.log(skillItem)
