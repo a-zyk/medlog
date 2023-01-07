@@ -10,6 +10,8 @@ const NavBar = () => {
   const [sideBarShow, setSideBarShow] = useState(false);
   const [profile, setProfile] = useState(null);
   const user = useUser();
+  const client = useSupabaseClient()
+
   useEffect(() => {
     getProfile();
   }, [user]);
@@ -23,7 +25,6 @@ const NavBar = () => {
         .single();
 
       if (data) {
-        console.log(data);
         setProfile(data);
       }
     }
@@ -40,6 +41,10 @@ const NavBar = () => {
       if (error) console.log(error);
       if (data) console.log(data);
     }
+  };
+
+  const signOut = async () => {
+    const { error } = await client.auth.signOut();
   };
 
   const cycleSelect = (
@@ -60,12 +65,11 @@ const NavBar = () => {
       </option>
     </select>
   );
-  ``;
 
   return (
     <>
       <div className="md:hidden absolute z-10">
-        <Menu onClick={() => setSideBarShow(previous => !previous)}/>
+        <Menu onClick={() => setSideBarShow((previous) => !previous)} />
       </div>
 
       <nav
@@ -88,9 +92,10 @@ const NavBar = () => {
 
         {user ? user.email : <Link href="/">Sign in</Link>}
 
-        {profile ? (
+        {user ? (
           <>
-            {profile.current_cycle}
+            <button onClick={signOut}>Sign out</button>
+            {profile && profile.current_cycle}
             {cycleSelect}
           </>
         ) : null}
