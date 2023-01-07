@@ -3,23 +3,28 @@ import { useState } from "react";
 import AbcSelect from "./AbcSelect";
 import validate from "../domain/patientFormErrors";
 import { ErrorWrapper, Button } from "./ui/ui";
+import supabase from "../config/SupaBaseClient";
+import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 
-const PatientForm = ({ patient }) => {
+const PatientForm = ({ patient, onSubmit }) => {
+  const user = useUser();
   const [pathDx, setPathDx] = useState(patient.pathDx || "");
-  const [tlkCode, setTlkCode] = useState(patient.tlkCode || "");
-  const [abc, setAbc] = useState(patient.abc|| "");
+  const [tlkCode, setTlkCode] = useState("");
+  const [tlkCodeSuggestion, setTlkCodeSuggestion] = useState("");
+  const [abc, setAbc] = useState(patient.abc || "");
   const [patientNum, setPatientNum] = useState(patient.patientNum || "");
-  const [date, setDate] = useState(patient.date || "");
+  const currentDate = new Date().toISOString().split("T")[0];
+  const [date, setDate] = useState(patient.date || currentDate);
   const [errors, setErrors] = useState({});
 
   const pathChanged = (e) => {
     const diagnosis = e.currentTarget.value;
     setPathDx(diagnosis);
     const selectedItem = data.find((item) => item.pathDx === diagnosis);
-    if (selectedItem) setTlkCode(selectedItem.tlkCode);
+    if (selectedItem) setTlkCodeSuggestion(selectedItem.tlkCode);
   };
 
-  const onSubmit = (e) => {
+  const onFormSubmit = async (e) => {
     e.preventDefault();
     const { valid, errors: currentErrors } = validate(
       tlkCode,
@@ -31,12 +36,25 @@ const PatientForm = ({ patient }) => {
 
     setErrors(currentErrors);
     if (valid) {
-      // Save to da database
+      const { error } = await supabase.from("patients").insert({
+        tlkCode,
+        pathDx,
+        patient_num: patientNum,
+        date,
+        abc,
+        user_id: user.id,
+      });
+      onSubmit()
     }
+    setTlkCode("");
+    setPathDx("");
+    setPatientNum("");
+    setDate(currentDate);
+    setAbc("");
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onFormSubmit}>
       <div className="grid grid-cols-1 gap-4 m-auto max-w-sm">
         <div>
           <label htmlFor="date">Data</label>
@@ -66,7 +84,7 @@ const PatientForm = ({ patient }) => {
 
         <div>
           <label htmlFor="path-dx">Patologinė diagnozė</label>
-          
+
           <select value={pathDx} onChange={pathChanged} id="path-dx">
             <option></option>
             {data.map((diagnosis) => {
@@ -83,8 +101,8 @@ const PatientForm = ({ patient }) => {
         </div>
 
         <div>
-          <label htmlFor="tlk-code">TLK kodas {tlkCode} </label>
-          <input value={tlkCode} id="tlk-code" type="text" />
+          <label htmlFor="tlk-code">TLK kodas {tlkCodeSuggestion} </label>
+          <input value={tlkCode} onChange={(e) => setTlkCode(e.target.value)} id="tlk-code" type="text" />
           {errors.tlk ? <ErrorWrapper>Įveskite TLK kodą</ErrorWrapper> : null}
         </div>
 

@@ -1,20 +1,30 @@
-import fakeSkills from "../config/texts/fakeSkills.json";
 import Modal from "./ui/Modal";
 import SkillForm from "./SkillForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, TableItem, TableHeadItem, TableHead, TableBody } from "./ui/ui";
 import { Edit, Delete } from "./ui/icons";
+import supabase from "../config/SupaBaseClient";
 
 const skillList = () => {
+  const [skills, setSkills] = useState([]);
   const [editingSkill, setEditingSkill] = useState(null);
-  
-  const rows = fakeSkills.map((skill, i) => {
+
+  const getSkills = async () => {
+    const { data, error } = await supabase.from("skills").select();
+    if (data && !error) setSkills(data);
+  };
+
+  useEffect(() => {
+    getSkills();
+  }, []);
+
+  const rows = skills.map((skill, i) => {
     return (
       <tr key={i}>
         <TableItem>{i + 1}</TableItem>
         <TableItem>{skill.date}</TableItem>
-        <TableItem>{skill.departament}</TableItem>
-        <TableItem>{skill.patientNum}</TableItem>
+        <TableItem>{skill.department}</TableItem>
+        <TableItem>{skill.patient_num}</TableItem>
         <TableItem>{skill.skill}</TableItem>
         <TableItem>{skill.abc}</TableItem>
         <TableItem className="flex gap-4">
@@ -47,7 +57,7 @@ const skillList = () => {
       </Card>
       {editingSkill ? (
         <Modal onModalClose={() => setEditingSkill(null)}>
-          <SkillForm  skillItem={editingSkill} />
+          <SkillForm skillItem={editingSkill} />
         </Modal>
       ) : null}
     </>

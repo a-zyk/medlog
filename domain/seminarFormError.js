@@ -1,6 +1,6 @@
 const validate = (date, seminar, abc) => {
   let currentErrors = {};
-console.log(abc)
+
   if (!seminar.trim().length) {
     currentErrors.skill = true;
   }

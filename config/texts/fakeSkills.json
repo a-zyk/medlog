@@ -2,7 +2,7 @@
   {
     "id": 1,
     "date": "2022-01-13",
-    "departament": "Kardiologijos",
+    "department": "Kardiologijos",
     "patientNum": "AB-12-X",
     "skill": "Koniotomija",
     "abc": "A"
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "date": "04-01-2022",
-    "departament": "Nefrologijos",
+    "department": "Nefrologijos",
     "patientNum": "GX-4-A",
     "skill": "Koniotomija",
     "abc": "B"
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "date": "10-01-2022",
-    "departament": "Gastroenterologijos",
+    "department": "Gastroenterologijos",
     "patientNum": "AC-432",
     "skill": "Koniotomija",
     "abc": "C"
@@ -26,7 +26,7 @@
   {
     "id": 4,
     "date": "20-01-2022",
-    "departament": "Vaikų ir akušerijos",
+    "department": "Vaikų ir akušerijos",
     "patientNum": "GD-4-ABC",
     "skill": "Koniotomija",
     "abc": "C"

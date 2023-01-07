@@ -1,5 +1,6 @@
 import PatientForm from "../components/PatientForm";
 import PatientList from "../components/PatientList";
+import { useRef } from "react";
 import { Card } from "../components/ui/ui";
 import { Auth, ThemeSupa } from "@supabase/auth-ui-react";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
@@ -7,6 +8,11 @@ import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 export default function Home() {
   const user = useUser();
   const supabase = useSupabaseClient();
+  const ListRef = useRef()
+
+  const refreshList = () => {
+    ListRef.current.getPatients()
+  }
   
   if (!user) {
     return <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />;
@@ -15,9 +21,9 @@ export default function Home() {
   return (
     <div className="container">
       <Card>
-        <PatientForm patient={{}} />
+        <PatientForm onSubmit={refreshList} patient={{}} />
       </Card>
-      <PatientList />
+      <PatientList ref={ListRef} />
     </div>
   );
 }

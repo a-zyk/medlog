@@ -1,8 +1,8 @@
-const validate = (date,departament, patientNum, skill, abc) => {
+const validate = (date,department, patientNum, skill, abc) => {
     let currentErrors = {};
 
-    if (!departament.trim().length) {
-      currentErrors.departament = true;
+    if (!department.trim().length) {
+      currentErrors.department = true;
     }
 
     if (!patientNum.trim().length) {
@@ -21,7 +21,7 @@ const validate = (date,departament, patientNum, skill, abc) => {
       currentErrors.abc = true;
     }
 
-    const valid = !(currentErrors.skill || currentErrors.patientNum || currentErrors.departament || currentErrors.date || currentErrors.abc);
+    const valid = !(currentErrors.skill || currentErrors.patientNum || currentErrors.department || currentErrors.date || currentErrors.abc);
 
     return {
         valid: valid,
