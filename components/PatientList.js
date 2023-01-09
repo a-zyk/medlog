@@ -11,7 +11,6 @@ const patientList = ({}, ref) => {
   const user = useUser();
   const [patients, setPatients] = useState([]);
   const [editingPatient, setEditingPatient] = useState(null);
-  const [deletingPatient, setDeletingPatient] = useState(null);
 
   useImperativeHandle(ref, () => ({
     getPatients() {
@@ -28,6 +27,7 @@ const patientList = ({}, ref) => {
     if (data && !error) {
       setPatients(data);
     }
+    setEditingPatient(null);
   };
 
   useEffect(() => {
@@ -81,7 +81,7 @@ const patientList = ({}, ref) => {
 
       {editingPatient ? (
         <Modal onModalClose={() => setEditingPatient(null)}>
-          <PatientForm patient={editingPatient} />
+          <PatientForm onSubmit={getPatients} patient={editingPatient} />
         </Modal>
       ) : null}
     </>

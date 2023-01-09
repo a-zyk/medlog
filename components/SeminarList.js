@@ -1,14 +1,44 @@
-import fakeSeminars from '../config/texts/fakeSeminars.json'
+import fakeSeminars from "../config/texts/fakeSeminars.json";
 import Modal from "./ui/Modal";
-import { useState } from "react";
+import { useEffect, useState, useImperativeHandle } from "react";
 import { Card, TableItem, TableHeadItem, TableHead, TableBody } from "./ui/ui";
 import { Edit, Delete } from "./ui/icons";
-import SeminarForm from './SeminarForm'
+import SeminarForm from "./SeminarForm";
+import React from "react";
+import supabase from "../config/SupaBaseClient";
 
-const seminarList = () => {
+const SeminarList = ({}, ref) => {
+  useImperativeHandle(ref, () => ({
+    getSeminars() {
+      getSeminars();
+    },
+  }));
+  const [seminars, setSeminars] = useState([]);
   const [editingSeminar, setEditingSeminar] = useState(null);
-  
-  const rows = fakeSeminars.map((seminar, i) => {
+  const getSeminars = async () => {
+    const { data, error } = await supabase
+      .from("seminars")
+      .select()
+      .order("date", { ascending: false });
+    if (data && !error) {
+      setSeminars(data);
+    }
+    setEditingSeminar(null);
+  };
+
+  useEffect(() => {
+    getSeminars();
+  }, []);
+
+  const onDeleteSeminar = async (seminar) => {
+    const { error } = await supabase
+      .from("seminars")
+      .delete()
+      .eq("id", seminar.id)
+      .select();
+    getSeminars();
+  };
+  const rows = seminars.map((seminar, i) => {
     return (
       <tr key={i}>
         <TableItem>{i + 1}</TableItem>
@@ -17,7 +47,7 @@ const seminarList = () => {
         <TableItem>{seminar.abc}</TableItem>
         <TableItem className="flex gap-4">
           <Edit onClick={() => setEditingSeminar(seminar)} />
-          <Delete />
+          <Delete onClick={() => onDeleteSeminar(seminar)} />
         </TableItem>
       </tr>
     );
@@ -43,11 +73,11 @@ const seminarList = () => {
       </Card>
       {editingSeminar ? (
         <Modal onModalClose={() => setEditingSeminar(null)}>
-          <SeminarForm  seminarItem={editingSeminar} />
+          <SeminarForm onSubmit={getSeminars} seminarItem={editingSeminar} />
         </Modal>
       ) : null}
     </>
   );
 };
 
-export default seminarList;
+export default React.forwardRef(SeminarList);

@@ -6,17 +6,17 @@ import { Button, ErrorWrapper } from "./ui/ui";
 import supabase from "../config/SupaBaseClient";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 
-const SkillForm = ({ skillItem }) => {
+const SkillForm = ({ skillItem, onSubmit }) => {
   const user = useUser();
   const [abc, setAbc] = useState(skillItem.abc || "");
-  const [patientNum, setPatientNum] = useState(skillItem.patientNum || "");
+  const [patientNum, setPatientNum] = useState(skillItem.patient_num || "");
   const currentDate = new Date().toISOString().split("T")[0];
   const [date, setDate] = useState(skillItem.date || currentDate);
   const [department, setDepartment] = useState(skillItem.department || "");
   const [skill, setSkill] = useState(skillItem.skill || "");
   const [errors, setErrors] = useState({});
 
-  const onSubmit = async (e) => {
+  const onFormSubmit = async (e) => {
     e.preventDefault();
     const { valid, errors: currentErrors } = validate(
       date,
@@ -27,26 +27,41 @@ const SkillForm = ({ skillItem }) => {
     );
 
     setErrors(currentErrors);
-    if (valid) {
-      const { error } = await supabase.from("skills").insert({
-        date,
-        department,
-        skill,
-        abc,
-        patient_num: patientNum,
-        user_id: user.id,
-      });
 
-      setAbc("");
-      setDate(currentDate);
-      setDepartment("");
-      setPatientNum("");
-      setSkill("");
+    if (valid) {
+      if (skillItem.id) {
+        const { error } = await supabase
+          .from("skills")
+          .update({
+            date,
+            department,
+            skill,
+            abc,
+            patient_num: patientNum,
+          })
+          .eq("id", skillItem.id);
+      } else {
+        const { error } = await supabase.from("skills").insert({
+          date,
+          department,
+          skill,
+          abc,
+          patient_num: patientNum,
+          user_id: user.id,
+        });
+        setAbc("");
+        setDate(currentDate);
+        setDepartment("");
+        setPatientNum("");
+        setSkill("");
+      }
+onSubmit()
+     
     }
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onFormSubmit}>
       <div className="grid grid-cols-1 gap-4 m-auto max-w-sm">
         <div>
           <label htmlFor="date">Data</label>

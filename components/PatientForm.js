@@ -9,10 +9,10 @@ import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 const PatientForm = ({ patient, onSubmit }) => {
   const user = useUser();
   const [pathDx, setPathDx] = useState(patient.pathDx || "");
-  const [tlkCode, setTlkCode] = useState("");
+  const [tlkCode, setTlkCode] = useState(patient.tlkCode || "");
   const [tlkCodeSuggestion, setTlkCodeSuggestion] = useState("");
   const [abc, setAbc] = useState(patient.abc || "");
-  const [patientNum, setPatientNum] = useState(patient.patientNum || "");
+  const [patientNum, setPatientNum] = useState(patient.patient_num || "");
   const currentDate = new Date().toISOString().split("T")[0];
   const [date, setDate] = useState(patient.date || currentDate);
   const [errors, setErrors] = useState({});
@@ -36,21 +36,35 @@ const PatientForm = ({ patient, onSubmit }) => {
 
     setErrors(currentErrors);
     if (valid) {
-      const { error } = await supabase.from("patients").insert({
-        tlkCode,
-        pathDx,
-        patient_num: patientNum,
-        date,
-        abc,
-        user_id: user.id,
-      });
-      onSubmit()
+      if (patient.id) {
+        const { error } = await supabase
+          .from("patients")
+          .update({
+            tlkCode,
+            pathDx,
+            patient_num: patientNum,
+            date,
+            abc,
+          })
+          .eq("id", patient.id);
+      } else {
+        const { error } = await supabase.from("patients").insert({
+          tlkCode,
+          pathDx,
+          patient_num: patientNum,
+          date,
+          abc,
+          user_id: user.id,
+        });
+        setTlkCode("");
+        setPathDx("");
+        setPatientNum("");
+        setDate(currentDate);
+        setAbc("");
+      }
+
+      onSubmit();
     }
-    setTlkCode("");
-    setPathDx("");
-    setPatientNum("");
-    setDate(currentDate);
-    setAbc("");
   };
 
   return (
@@ -102,7 +116,12 @@ const PatientForm = ({ patient, onSubmit }) => {
 
         <div>
           <label htmlFor="tlk-code">TLK kodas {tlkCodeSuggestion} </label>
-          <input value={tlkCode} onChange={(e) => setTlkCode(e.target.value)} id="tlk-code" type="text" />
+          <input
+            value={tlkCode}
+            onChange={(e) => setTlkCode(e.target.value)}
+            id="tlk-code"
+            type="text"
+          />
           {errors.tlk ? <ErrorWrapper>Įveskite TLK kodą</ErrorWrapper> : null}
         </div>
 

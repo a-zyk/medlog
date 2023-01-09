@@ -1,23 +1,45 @@
 import Modal from "./ui/Modal";
 import SkillForm from "./SkillForm";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useImperativeHandle } from "react";
 import { Card, TableItem, TableHeadItem, TableHead, TableBody } from "./ui/ui";
 import { Edit, Delete } from "./ui/icons";
+import React from "react";
 import supabase from "../config/SupaBaseClient";
+import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 
-const skillList = () => {
+const skillList = ({}, ref) => {
   const [skills, setSkills] = useState([]);
   const [editingSkill, setEditingSkill] = useState(null);
 
+  useImperativeHandle(ref, () => ({
+    getSkills() {
+      getSkills();
+    },
+  }));
+
   const getSkills = async () => {
-    const { data, error } = await supabase.from("skills").select();
-    if (data && !error) setSkills(data);
+    const { data, error } = await supabase
+      .from("skills")
+      .select()
+      .order("date", { ascending: false });
+    if (data && !error) {
+      setSkills(data);
+    }
+    setEditingSkill(null);
   };
 
   useEffect(() => {
     getSkills();
   }, []);
 
+  const onDeleteSkill = async (skill) => {
+    const { error } = await supabase
+      .from("skills")
+      .delete()
+      .eq("id", skill.id)
+      .select();
+    getSkills();
+  };
   const rows = skills.map((skill, i) => {
     return (
       <tr key={i}>
@@ -29,7 +51,7 @@ const skillList = () => {
         <TableItem>{skill.abc}</TableItem>
         <TableItem className="flex gap-4">
           <Edit onClick={() => setEditingSkill(skill)} />
-          <Delete />
+          <Delete onClick={() => onDeleteSkill(skill)} />
         </TableItem>
       </tr>
     );
@@ -41,7 +63,7 @@ const skillList = () => {
         <div className="flex gap-4 flex-col m-auto max-w-l ">
           <table>
             <TableHead>
-              <tr className="text-left">
+               <tr className="text-left">
                 <TableHeadItem>Nr.</TableHeadItem>
                 <TableHeadItem>Data</TableHeadItem>
                 <TableHeadItem>Padalinys</TableHeadItem>
@@ -57,11 +79,11 @@ const skillList = () => {
       </Card>
       {editingSkill ? (
         <Modal onModalClose={() => setEditingSkill(null)}>
-          <SkillForm skillItem={editingSkill} />
+          <SkillForm onSubmit={getSkills} skillItem={editingSkill} />
         </Modal>
       ) : null}
     </>
   );
 };
 
-export default skillList;
+export default React.forwardRef(skillList);

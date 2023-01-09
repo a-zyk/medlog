@@ -15,7 +15,9 @@ export default function Home() {
   }
   
   if (!user) {
-    return <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />;
+    return(
+      <div className="mt-40 mx-2 w-full container"><Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />;</div>
+    ) 
   }
 
   return (

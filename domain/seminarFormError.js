@@ -2,7 +2,7 @@ const validate = (date, seminar, abc) => {
   let currentErrors = {};
 
   if (!seminar.trim().length) {
-    currentErrors.skill = true;
+    currentErrors.seminar = true;
   }
 
   if (!date.trim().length) {

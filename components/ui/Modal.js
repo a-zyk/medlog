@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Card } from "./ui";
 import { Close } from "./icons";
 

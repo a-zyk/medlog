@@ -3,19 +3,49 @@ import { ErrorWrapper, Button } from "./ui/ui";
 import { useState } from "react";
 import AbcSelect from "./AbcSelect";
 import validate from "../domain/seminarFormError";
-const Seminar = ({seminarItem}) => {
+import supabase from "../config/SupaBaseClient";
+import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
+const Seminar = ({ seminarItem, onSubmit }) => {
+  const user = useUser();
   const currentDate = new Date().toISOString().split("T")[0];
   const [seminar, setSeminar] = useState(seminarItem.seminar || "");
-  const [date, setDate] = useState(currentDate || '');
+  const [date, setDate] = useState(seminarItem.date || currentDate);
   const [abc, setAbc] = useState(seminarItem.abc || "");
   const [errors, setErrors] = useState({});
 
-  const onSubmit = (e) => {
+  const onFormSubmit = async (e) => {
     e.preventDefault();
     const { valid, errors: currentErrors } = validate(date, seminar, abc);
+    setErrors(currentErrors);
+    if (valid) {
+      if (seminarItem.id) {
+        const { error } = await supabase
+          .from("seminars")
+          .update({
+            date,
+            seminar,
+
+            abc,
+          })
+          .eq("id", seminarItem.id);
+      } else {
+        const { error } = await supabase.from("seminars").insert({
+          date,
+          seminar,
+
+          abc,
+
+          user_id: user.id,
+        });
+        setAbc("");
+        setDate(currentDate);
+        setSeminar("");
+      }
+      onSubmit();
+    }
   };
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onFormSubmit}>
       <div className="grid grid-cols-1 gap-4 m-auto max-w-sm">
         <div>
           <label htmlFor="date">Data</label>
@@ -39,8 +69,8 @@ const Seminar = ({seminarItem}) => {
               );
             })}
           </select>
-          {errors.pathDx ? (
-            <ErrorWrapper>Pasirinkite patologinę diagnozę</ErrorWrapper>
+          {errors.seminar ? (
+            <ErrorWrapper>Pasirinkite seminarą</ErrorWrapper>
           ) : null}
         </div>
         <AbcSelect
