@@ -1,4 +1,5 @@
 import Profile from "../components/Profile"
+
 const profile = () => {
     return (<Profile/>)
 }

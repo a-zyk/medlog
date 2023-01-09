@@ -55,8 +55,7 @@ const SkillForm = ({ skillItem, onSubmit }) => {
         setPatientNum("");
         setSkill("");
       }
-onSubmit()
-     
+      onSubmit();
     }
   };
 

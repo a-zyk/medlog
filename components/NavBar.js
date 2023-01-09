@@ -3,33 +3,15 @@ import { NavItem } from "./ui/ui";
 import { Menu } from "./ui/icons";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import User from "./Profile";
-import { useEffect, useState } from "react";
-import supabase from "../config/SupaBaseClient";
+import { useState, useContext } from "react";
 import Profile from "./Profile";
+import profileContext from "../domain/profileContext";
 
 const NavBar = () => {
   const [sideBarShow, setSideBarShow] = useState(false);
-  const [profile, setProfile] = useState(null);
-  const user = useUser();
+  const { profile } = useContext(profileContext)
   const client = useSupabaseClient();
-
-  useEffect(() => {
-    getProfile();
-  }, [user]);
-
-  const getProfile = async () => {
-    if (user) {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select()
-        .eq("id", user.id)
-        .single();
-
-      if (data) {
-        setProfile(data);
-      }
-    }
-  };
+  const user = useUser()
 
   const signOut = async () => {
     const { error } = await client.auth.signOut();
@@ -43,7 +25,8 @@ const NavBar = () => {
         <Menu onClick={() => setSideBarShow((previous) => !previous)} />
       </div>
 
-      <nav onClick={() => setSideBarShow(false)}
+      <nav
+        onClick={() => setSideBarShow(false)}
         className={`${
           sideBarShow ? "flex" : "hidden"
         } absolute md:relative md:flex w-64 h-screen overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800 flex-col`}

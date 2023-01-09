@@ -1,39 +1,51 @@
 [
     {
+        "cycle":1,
         "seminar": "Politraumos biomechanizmai ir sunkumo vertinimas. Medicininės pagalbos organizavimas ir teikimo eiliškumo principai."
     },
     {
+        "cycle":1,
         "seminar": "Politrauma. Būklės vertinimas. Ištyrimo ir gydymo taktika."
     },
     {
+        "cycle":1,
         "seminar": "Skeleto ir minkštųjų audinių trauma."
     },
     {
+        "cycle":1,
         "seminar": "Nukraujavimo rizikos ir laipsnio vertinimas. Hipovoleminis šokas."
     },
     {
+        "cycle":1,
         "seminar": "Sunkios galvos smegenų traumos sukeltos kritinės būklės patofiziologija, ištyrimo ir gydymo taktika."
     },
     {
+        "cycle":1,
         "seminar": "Stuburo smegenų trauminio pažeidimo diagnostika, gydymas ir profilaktika."
     },
     {
+        "cycle":1,
         "seminar": "Hipotermijos ir hipertermijos patofiziologija, diagnostika ir gydymas."
     },
     {
+        "cycle":1,
         "seminar": "Sunkios krūtinės traumos sukeltų gyvybei pavojingų būklių diagnostika ir gydymas."
     },
     {
+        "cycle":1,
         "seminar": "Sunkios pilvo traumos diagnostikos ir gydymo protokolas. Vidinis kraujavimas."
     },
     {
+        "cycle":1,
         "seminar": "Smegenų kraujotakos sutrikimo sukeltos kritinės būklės."
     },
   
     {
+        "cycle":1,
         "seminar": "Mioneuralinių jungčių, raumenų, uždegiminių, infekcinių ir kitos nervų sistemos patologijos  sukeltų kritinių organizmo būklių patofiziologija, diagnostika ir gydymo taktika."
     },
     {
+        "cycle":1,
         "seminar": "Apibendrinimas. Neaiškių klausimų aptarimas."
     }
 ]

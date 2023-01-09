@@ -1,13 +1,17 @@
-import data from "../config/texts/cycleOne/Diagnosis.json";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import AbcSelect from "./AbcSelect";
 import validate from "../domain/patientFormErrors";
 import { ErrorWrapper, Button } from "./ui/ui";
 import supabase from "../config/SupaBaseClient";
-import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useUser } from "@supabase/auth-helpers-react";
+import cycleOneDiagnosis from "../config/texts/cycleOne/Diagnosis.json";
+import cycleTwoDiagnosis from "../config/texts/cycleTwo/Diagnosis.json";
+import cycleThreeDiagnosis from "../config/texts/cycleThree/Diagnosis.json";
+import profileContext from "../domain/profileContext";
 
 const PatientForm = ({ patient, onSubmit }) => {
   const user = useUser();
+  const {profile} = useContext(profileContext)
   const [pathDx, setPathDx] = useState(patient.pathDx || "");
   const [tlkCode, setTlkCode] = useState(patient.tlkCode || "");
   const [tlkCodeSuggestion, setTlkCodeSuggestion] = useState("");
@@ -16,11 +20,24 @@ const PatientForm = ({ patient, onSubmit }) => {
   const currentDate = new Date().toISOString().split("T")[0];
   const [date, setDate] = useState(patient.date || currentDate);
   const [errors, setErrors] = useState({});
+  const [diagnoses, setDiagnoses] = useState([]);
+
+  const availableDiagnoses = [
+    cycleOneDiagnosis,
+    cycleTwoDiagnosis,
+    cycleThreeDiagnosis,
+  ];
+  useEffect(() => {
+    if (profile && profile.current_cycle) {
+      const currentCycle = parseInt(profile.current_cycle);
+      setDiagnoses(availableDiagnoses[currentCycle - 1]);
+    }
+  }, [profile]);
 
   const pathChanged = (e) => {
     const diagnosis = e.currentTarget.value;
     setPathDx(diagnosis);
-    const selectedItem = data.find((item) => item.pathDx === diagnosis);
+    const selectedItem = diagnoses.find((item) => item.pathDx === diagnosis);
     if (selectedItem) setTlkCodeSuggestion(selectedItem.tlkCode);
   };
 
@@ -101,7 +118,7 @@ const PatientForm = ({ patient, onSubmit }) => {
 
           <select value={pathDx} onChange={pathChanged} id="path-dx">
             <option></option>
-            {data.map((diagnosis) => {
+            {diagnoses.map((diagnosis) => {
               return (
                 <option value={diagnosis.pathDx} key={diagnosis.tlkCode}>
                   {diagnosis.pathDx}
