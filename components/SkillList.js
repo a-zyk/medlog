@@ -1,13 +1,21 @@
 import Modal from "./ui/Modal";
 import SkillForm from "./SkillForm";
 import { useEffect, useState, useImperativeHandle } from "react";
-import { Card, TableItem, TableHeadItem, TableHead, TableBody } from "./ui/ui";
+import {
+  Card,
+  TableItem,
+  TableHeadItem,
+  TableHead,
+  TableBody,
+  TableWrapper,
+  Table,
+} from "./ui/ui";
 import { Edit, Delete } from "./ui/icons";
 import React from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const skillList = ({}, ref) => {
-  const supabase = useSupabaseClient()
+  const supabase = useSupabaseClient();
   const [skills, setSkills] = useState([]);
   const [editingSkill, setEditingSkill] = useState(null);
 
@@ -51,7 +59,13 @@ const skillList = ({}, ref) => {
         <TableItem>{skill.abc}</TableItem>
         <TableItem className="flex gap-4">
           <Edit onClick={() => setEditingSkill(skill)} />
-          <Delete onClick={ () => confirm("Ar tikrai norite ištrinti įgudį?") ? onDeleteSkill(skill) : null } />
+          <Delete
+            onClick={() =>
+              confirm("Ar tikrai norite ištrinti įgudį?")
+                ? onDeleteSkill(skill)
+                : null
+            }
+          />
         </TableItem>
       </tr>
     );
@@ -60,10 +74,10 @@ const skillList = ({}, ref) => {
   return (
     <>
       <Card>
-        <div className="flex gap-4 flex-col m-auto max-w-l ">
-          <table>
+        <TableWrapper>
+          <Table>
             <TableHead>
-               <tr className="text-left">
+              <tr className="text-left">
                 <TableHeadItem>Nr.</TableHeadItem>
                 <TableHeadItem>Data</TableHeadItem>
                 <TableHeadItem>Padalinys</TableHeadItem>
@@ -74,8 +88,8 @@ const skillList = ({}, ref) => {
               </tr>
             </TableHead>
             <TableBody>{rows}</TableBody>
-          </table>
-        </div>
+          </Table>
+        </TableWrapper>
       </Card>
       {editingSkill ? (
         <Modal onModalClose={() => setEditingSkill(null)}>

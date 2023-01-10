@@ -1,8 +1,13 @@
 import tw from "twin.macro";
 
+export const TableWrapper = tw.div`
+overflow-x-scroll md:overflow-auto
+`;
+
+export const Table = tw.table`w-full`;
+
 export const Card = tw.div`
-	p-6 bg-white border border-gray-200 rounded-lg shadow-md 
-	
+	p-6 bg-white border border-gray-200 rounded-lg shadow-md 	
 `;
 
 export const TableItem = tw.td`

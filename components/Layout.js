@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
     <ProfileContext.Provider value={{ profile, setProfile }}>
       <div className="flex">
         <NavBar />
-        {children}
+        <div className="container">{children}</div>
       </div>
     </ProfileContext.Provider>
   );

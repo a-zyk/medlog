@@ -1,6 +1,14 @@
 import Modal from "./ui/Modal";
 import { useEffect, useState, useImperativeHandle } from "react";
-import { Card, TableItem, TableHeadItem, TableHead, TableBody } from "./ui/ui";
+import {
+  Card,
+  TableItem,
+  TableHeadItem,
+  TableHead,
+  TableBody,
+  TableWrapper,
+  Table,
+} from "./ui/ui";
 import { Edit, Delete } from "./ui/icons";
 import SeminarForm from "./SeminarForm";
 import React from "react";
@@ -62,8 +70,8 @@ const SeminarList = ({}, ref) => {
   return (
     <>
       <Card>
-        <div className="flex gap-4 flex-col m-auto max-w-l ">
-          <table>
+        <TableWrapper>
+          <Table>
             <TableHead>
               <tr className="text-left">
                 <TableHeadItem>Nr.</TableHeadItem>
@@ -74,8 +82,8 @@ const SeminarList = ({}, ref) => {
               </tr>
             </TableHead>
             <TableBody>{rows}</TableBody>
-          </table>
-        </div>
+          </Table>
+        </TableWrapper>
       </Card>
       {editingSeminar ? (
         <Modal onModalClose={() => setEditingSeminar(null)}>

@@ -1,14 +1,21 @@
-import { Card, TableItem, TableHeadItem, TableHead, TableBody } from "./ui/ui";
+import {
+  Card,
+  TableItem,
+  TableHeadItem,
+  TableHead,
+  TableBody,
+  TableWrapper,
+  Table,
+} from "./ui/ui";
 import { Edit, Delete } from "./ui/icons";
 import { useState, useEffect, useImperativeHandle } from "react";
 import Modal from "./ui/Modal";
 import React from "react";
 import PatientForm from "./PatientForm";
-import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const patientList = ({}, ref) => {
-  const supabase = useSupabaseClient()
-  const user = useUser();
+  const supabase = useSupabaseClient();
   const [patients, setPatients] = useState([]);
   const [editingPatient, setEditingPatient] = useState(null);
 
@@ -53,7 +60,13 @@ const patientList = ({}, ref) => {
         <TableItem>{patient.abc}</TableItem>
         <TableItem className="flex gap-4">
           <Edit onClick={() => setEditingPatient(patient)} />
-          <Delete onClick={() => confirm("Ar tikrai norite ištrinti pacientą?") ? onDeletePatient(patient) : null} />
+          <Delete
+            onClick={() =>
+              confirm("Ar tikrai norite ištrinti pacientą?")
+                ? onDeletePatient(patient)
+                : null
+            }
+          />
         </TableItem>
       </tr>
     );
@@ -62,8 +75,8 @@ const patientList = ({}, ref) => {
   return (
     <>
       <Card>
-        <div className="flex gap-4 flex-col m-auto max-w-l ">
-          <table>
+        <TableWrapper>
+          <Table>
             <TableHead>
               <tr className="text-left">
                 <TableHeadItem>Nr.</TableHeadItem>
@@ -75,8 +88,8 @@ const patientList = ({}, ref) => {
               </tr>
             </TableHead>
             <TableBody>{rows}</TableBody>
-          </table>
-        </div>
+          </Table>
+        </TableWrapper>
       </Card>
 
       {editingPatient ? (
