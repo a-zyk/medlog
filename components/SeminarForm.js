@@ -1,18 +1,31 @@
-import data from "../domain/texts/cycleOne/Seminar.json";
 import { ErrorWrapper, Button } from "./ui/ui";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import AbcSelect from "./AbcSelect";
 import validate from "../domain/seminarFormError";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
+import profileContext from "../domain/profileContext";
+import cycleOne from "../domain/texts/cycleOne/Seminars.json";
+import cycleTwo from "../domain/texts/cycleTwo/Seminars.json";
+import cycleThree from "../domain/texts/cycleThree/Seminars.json";
+
 const Seminar = ({ seminarItem, onSubmit }) => {
   const user = useUser();
-  const supabase = useSupabaseClient()
+  const supabase = useSupabaseClient();
+  const { profile } = useContext(profileContext);
   const currentDate = new Date().toISOString().split("T")[0];
   const [seminar, setSeminar] = useState(seminarItem.seminar || "");
   const [date, setDate] = useState(seminarItem.date || currentDate);
   const [abc, setAbc] = useState(seminarItem.abc || "");
   const [errors, setErrors] = useState({});
+  const [currentSeminar, setCurrentSeminar] = useState([]);
+  const availableSeminars = [cycleOne, cycleTwo, cycleThree];
 
+  useEffect(() => {
+    if (profile && profile.current_cycle) {
+      const currentCycle = parseInt(profile.current_cycle);
+      setCurrentSeminar(availableSeminars[currentCycle - 1]);
+    }
+  }, [profile]);
   const onFormSubmit = async (e) => {
     e.preventDefault();
     const { valid, errors: currentErrors } = validate(date, seminar, abc);
@@ -61,7 +74,7 @@ const Seminar = ({ seminarItem, onSubmit }) => {
         <div>
           <select onChange={(e) => setSeminar(e.target.value)} value={seminar}>
             <option></option>
-            {data.map((item) => {
+            {currentSeminar.map((item) => {
               return (
                 <option value={item.seminar} key={item.seminar}>
                   {item.seminar}

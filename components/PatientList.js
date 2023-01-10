@@ -53,7 +53,7 @@ const patientList = ({}, ref) => {
         <TableItem>{patient.abc}</TableItem>
         <TableItem className="flex gap-4">
           <Edit onClick={() => setEditingPatient(patient)} />
-          <Delete onClick={() => onDeletePatient(patient)} />
+          <Delete onClick={() => confirm("Ar tikrai norite ištrinti pacientą?") ? onDeletePatient(patient) : null} />
         </TableItem>
       </tr>
     );

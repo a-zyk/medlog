@@ -1,61 +1,61 @@
 [
     {
-     "Skill": "Diagnozuoti inkstų pažeidimą atspindinčius sindromus ir sudaryti pradinį tyrimo bei gydymo planą",
+     "skill": "Diagnozuoti inkstų pažeidimą atspindinčius sindromus ir sudaryti pradinį tyrimo bei gydymo planą",
      "cycle": 2,
      "A": 6,
      "B": 2,
      "C": 2
     },
     {
-     "Skill": "Įvertinti inkstų funkciją pagal glomerulų \nfiltracijos greitį",
+     "skill": "Įvertinti inkstų funkciją pagal glomerulų \nfiltracijos greitį",
      "cycle": 2,
      "A": 6,
      "B": 2,
      "C": 2
     },
     {
-     "Skill": "Dozuoti vaistus pagal inkstų nepakankamumo laipsnį",
+     "skill": "Dozuoti vaistus pagal inkstų nepakankamumo laipsnį",
      "cycle": 2,
      "A": 8,
      "B": 2,
      "C": 2
     },
     {
-     "Skill": "Diagnozuoti urgentinę būklę dėl inkstų funkcijos sutrikimo (hipervolemiją, hiperkalemiją, ureminę intoksikaciją, \nhipertenzinę krizę) ir suteikti neatidėliotiną pagalbą",
+     "skill": "Diagnozuoti urgentinę būklę dėl inkstų funkcijos sutrikimo (hipervolemiją, hiperkalemiją, ureminę intoksikaciją, \nhipertenzinę krizę) ir suteikti neatidėliotiną pagalbą",
      "cycle": 2,
      "A": 6,
      "B": 2,
      "C": 2
     },
     {
-     "Skill": "Pritaikyti pakaitinės inkstų terapijos metodikas",
+     "skill": "Pritaikyti pakaitinės inkstų terapijos metodikas",
      "cycle": 2,
      "A": 1,
      "B": 8,
      "C": 1
     },
     {
-     "Skill": "Pritaikyti plazmaferezę",
+     "skill": "Pritaikyti plazmaferezę",
      "cycle": 2,
      "C": 1
     },
     {
-     "Skill": "Skrandžio ištuštinimas apsinuodijus ",
+     "skill": "Skrandžio ištuštinimas apsinuodijus ",
      "cycle": 2,
      "A": 12
     },
     {
-     "Skill": "Šlapimo šarminimas",
+     "skill": "Šlapimo šarminimas",
      "cycle": 2,
      "A": 4
     },
     {
-     "Skill": "Enterosorbcija",
+     "skill": "Enterosorbcija",
      "cycle": 2,
      "A": 10
     },
     {
-     "Skill": "Detoksikacinė hemodializė",
+     "skill": "Detoksikacinė hemodializė",
      "cycle": 2,
      "B": 2,
      "C": 1

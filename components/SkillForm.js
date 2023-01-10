@@ -1,20 +1,34 @@
-import data from "../domain/texts/cycleOne/Skills.json";
-import { useState } from "react";
+
+import { useState,useEffect, useContext } from "react";
 import AbcSelect from "./AbcSelect";
 import validate from "../domain/skillFormErrors";
 import { Button, ErrorWrapper } from "./ui/ui";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
+import profileContext from "../domain/profileContext";
+import cycleOne from "../domain/texts/cycleOne/Skills.json";
+import cycleTwo from "../domain/texts/cycleTwo/Skills.json";
+import cycleThree from "../domain/texts/cycleThree/Skills.json";
 
 const SkillForm = ({ skillItem, onSubmit }) => {
   const user = useUser();
-  const supabase = useSupabaseClient()
+  const supabase = useSupabaseClient();
+  const { profile } = useContext(profileContext);
   const [abc, setAbc] = useState(skillItem.abc || "");
   const [patientNum, setPatientNum] = useState(skillItem.patient_num || "");
   const currentDate = new Date().toISOString().split("T")[0];
   const [date, setDate] = useState(skillItem.date || currentDate);
   const [department, setDepartment] = useState(skillItem.department || "");
   const [skill, setSkill] = useState(skillItem.skill || "");
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});  
+  const [currentSkills, setCurrentSkills] = useState([]);
+  const availableSkills = [cycleOne, cycleTwo, cycleThree];
+
+  useEffect(() => {
+    if (profile && profile.current_cycle) {
+      const currentCycle = parseInt(profile.current_cycle);
+      setCurrentSkills(availableSkills[currentCycle - 1]);
+    }
+  }, [profile]);
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
@@ -109,7 +123,7 @@ const SkillForm = ({ skillItem, onSubmit }) => {
             id="skill"
           >
             <option></option>
-            {data.map((item) => {
+            {currentSkills.map((item) => {
               return (
                 <option value={item.skill} key={item.skill}>
                   {item.skill}
