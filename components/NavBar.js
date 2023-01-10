@@ -29,7 +29,7 @@ const NavBar = () => {
         onClick={() => setSideBarShow(false)}
         className={`${
           sideBarShow ? "flex" : "hidden"
-        } absolute md:relative md:flex w-64 h-screen overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800 flex-col`}
+        } absolute md:relative md:flex w-64 h-screen overflow-y-auto py-4 px-3 bg-gray-50 rounded flex-col`}
       >
         {profile.current_cycle ? (
           <>
