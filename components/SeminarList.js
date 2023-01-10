@@ -47,7 +47,7 @@ const SeminarList = ({}, ref) => {
         <TableItem>{seminar.abc}</TableItem>
         <TableItem className="flex gap-4">
           <Edit onClick={() => setEditingSeminar(seminar)} />
-          <Delete onClick={() => onDeleteSeminar(seminar)} />
+          <Delete onClick={ () => confirm("Ar tikrai norite ištrinti seminarą?") ? onDeleteSeminar(seminar) : null } />
         </TableItem>
       </tr>
     );

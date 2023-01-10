@@ -51,7 +51,7 @@ const skillList = ({}, ref) => {
         <TableItem>{skill.abc}</TableItem>
         <TableItem className="flex gap-4">
           <Edit onClick={() => setEditingSkill(skill)} />
-          <Delete onClick={() => onDeleteSkill(skill)} />
+          <Delete onClick={ () => confirm("Ar tikrai norite ištrinti įgudį?") ? onDeleteSkill(skill) : null } />
         </TableItem>
       </tr>
     );
