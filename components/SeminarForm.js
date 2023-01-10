@@ -93,7 +93,7 @@ const Seminar = ({ seminarItem, onSubmit }) => {
           ) : null}
         </div>
         <div>
-          <label htmlFor="skill">Lygis</label>
+          <label>Savarankiškumo ygis</label>
 
           <AbcSelect
             id={seminarItem.id}
