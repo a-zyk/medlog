@@ -7,7 +7,7 @@ import React from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const SeminarList = ({}, ref) => {
-  const supabase = useSupabaseClient()
+  const supabase = useSupabaseClient();
   useImperativeHandle(ref, () => ({
     getSeminars() {
       getSeminars();
@@ -47,7 +47,13 @@ const SeminarList = ({}, ref) => {
         <TableItem>{seminar.abc}</TableItem>
         <TableItem className="flex gap-4">
           <Edit onClick={() => setEditingSeminar(seminar)} />
-          <Delete onClick={ () => confirm("Ar tikrai norite ištrinti seminarą?") ? onDeleteSeminar(seminar) : null } />
+          <Delete
+            onClick={() =>
+              confirm("Ar tikrai norite ištrinti seminarą?")
+                ? onDeleteSeminar(seminar)
+                : null
+            }
+          />
         </TableItem>
       </tr>
     );

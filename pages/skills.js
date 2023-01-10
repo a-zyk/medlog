@@ -13,11 +13,13 @@ export default function Skills() {
 
   return (
     <>
-      <div className="container">
+      <div>
         <Card>
           <SkillForm onSubmit={refreshList} skillItem={{}} />
         </Card>
-        <SkillList ref={ListRef} />
+        <div className="w-full mt-4">
+          <SkillList ref={ListRef} />
+        </div>
       </div>
     </>
   );

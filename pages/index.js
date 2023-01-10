@@ -12,11 +12,13 @@ export default function Home() {
   };
 
   return (
-    <div className="container">
+    <div>
       <Card>
         <PatientForm onSubmit={refreshList} patient={{}} />
       </Card>
-      <PatientList ref={ListRef} />
+      <div className="w-full mt-4">
+        <PatientList ref={ListRef} />
+      </div>
     </div>
   );
 }

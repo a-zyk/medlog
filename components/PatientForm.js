@@ -9,9 +9,9 @@ import cycleThreeDiagnosis from "../domain/texts/cycleThree/Diagnosis.json";
 import profileContext from "../domain/profileContext";
 
 const PatientForm = ({ patient, onSubmit }) => {
-  const supabase = useSupabaseClient()
+  const supabase = useSupabaseClient();
   const user = useUser();
-  const {profile} = useContext(profileContext)
+  const { profile } = useContext(profileContext);
   const [pathDx, setPathDx] = useState(patient.pathDx || "");
   const [tlkCode, setTlkCode] = useState(patient.tlkCode || "");
   const [tlkCodeSuggestion, setTlkCodeSuggestion] = useState("");
@@ -86,7 +86,7 @@ const PatientForm = ({ patient, onSubmit }) => {
 
   return (
     <form onSubmit={onFormSubmit}>
-      <div className="grid grid-cols-1 gap-4 m-auto max-w-sm">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         <div>
           <label htmlFor="date">Data</label>
           <input
@@ -99,9 +99,7 @@ const PatientForm = ({ patient, onSubmit }) => {
         </div>
 
         <div>
-          <label htmlFor="patient-num">
-            Paciento ligos istorijos arba kortelės numeris
-          </label>
+          <label htmlFor="patient-num">Paciento numeris</label>
           <input
             value={patientNum}
             onChange={(e) => setPatientNum(e.target.value)}
@@ -154,7 +152,9 @@ const PatientForm = ({ patient, onSubmit }) => {
           ) : null}
         </div>
       </div>
-      <Button>Išsaugoti</Button>
+      <div className="mt-4 w-full flex justify-end">
+        <Button className="w-full md:w-auto">Išsaugoti</Button>
+      </div>
     </form>
   );
 };

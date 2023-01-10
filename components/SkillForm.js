@@ -1,5 +1,4 @@
-
-import { useState,useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import AbcSelect from "./AbcSelect";
 import validate from "../domain/skillFormErrors";
 import { Button, ErrorWrapper } from "./ui/ui";
@@ -19,7 +18,7 @@ const SkillForm = ({ skillItem, onSubmit }) => {
   const [date, setDate] = useState(skillItem.date || currentDate);
   const [department, setDepartment] = useState(skillItem.department || "");
   const [skill, setSkill] = useState(skillItem.skill || "");
-  const [errors, setErrors] = useState({});  
+  const [errors, setErrors] = useState({});
   const [currentSkills, setCurrentSkills] = useState([]);
   const availableSkills = [cycleOne, cycleTwo, cycleThree];
 
@@ -75,7 +74,7 @@ const SkillForm = ({ skillItem, onSubmit }) => {
 
   return (
     <form onSubmit={onFormSubmit}>
-      <div className="grid grid-cols-1 gap-4 m-auto max-w-sm">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         <div>
           <label htmlFor="date">Data</label>
           <input
@@ -101,9 +100,7 @@ const SkillForm = ({ skillItem, onSubmit }) => {
         </div>
 
         <div>
-          <label htmlFor="patient-num">
-            Paciento ligos istorijos ar ambulatorinės kortelės Nr.
-          </label>
+          <label htmlFor="patient-num">Paciento numeris</label>
           <input
             value={patientNum}
             onChange={(e) => setPatientNum(e.target.value)}
@@ -148,7 +145,9 @@ const SkillForm = ({ skillItem, onSubmit }) => {
           ) : null}
         </div>
       </div>
-      <Button>Išsaugoti</Button>
+      <div className="mt-4 w-full flex justify-end">
+        <Button className="w-full md:w-auto">Išsaugoti</Button>
+      </div>
     </form>
   );
 };

@@ -59,7 +59,7 @@ const Seminar = ({ seminarItem, onSubmit }) => {
   };
   return (
     <form onSubmit={onFormSubmit}>
-      <div className="grid grid-cols-1 gap-4 m-auto max-w-sm">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
           <label htmlFor="date">Data</label>
           <input
@@ -72,7 +72,13 @@ const Seminar = ({ seminarItem, onSubmit }) => {
         </div>
 
         <div>
-          <select onChange={(e) => setSeminar(e.target.value)} value={seminar}>
+          <label htmlFor="seminar">Seminaras</label>
+
+          <select
+            onChange={(e) => setSeminar(e.target.value)}
+            value={seminar}
+            id="seminar"
+          >
             <option></option>
             {currentSeminar.map((item) => {
               return (
@@ -86,16 +92,22 @@ const Seminar = ({ seminarItem, onSubmit }) => {
             <ErrorWrapper>Pasirinkite seminarą</ErrorWrapper>
           ) : null}
         </div>
-        <AbcSelect
-          id={seminarItem.id}
-          value={abc}
-          onChange={(e) => setAbc(e.target.value)}
-        />
-        {errors.abc ? (
-          <ErrorWrapper>Pasirinkite savarankiškumo lygį</ErrorWrapper>
-        ) : null}
+        <div>
+          <label htmlFor="skill">Lygis</label>
+
+          <AbcSelect
+            id={seminarItem.id}
+            value={abc}
+            onChange={(e) => setAbc(e.target.value)}
+          />
+          {errors.abc ? (
+            <ErrorWrapper>Pasirinkite savarankiškumo lygį</ErrorWrapper>
+          ) : null}
+        </div>
       </div>
-      <Button>Išsaugoti</Button>
+      <div className="mt-4 w-full flex justify-end">
+        <Button className="w-full md:w-auto">Išsaugoti</Button>
+      </div>
     </form>
   );
 };

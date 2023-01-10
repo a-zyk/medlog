@@ -1,7 +1,7 @@
 const AbcSelect = ({ onChange, value, id }) => {
 
   return (
-    <div className="grid w-full grid-cols-3 space-x-2 rounded-xl bg-gray-50 border border-gray-300 p-2">
+    <div className="grid w-full grid-cols-3 space-x-2 rounded-xl bg-gray-50 border border-gray-300 px-2 py-1">
       <div>
         <input
           onChange={onChange}
@@ -14,7 +14,7 @@ const AbcSelect = ({ onChange, value, id }) => {
         />
         <label
           htmlFor={`A${id}`}
-          className="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+          className="block cursor-pointer select-none rounded-xl py-1 px-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
         >
           A
         </label>
@@ -32,7 +32,7 @@ const AbcSelect = ({ onChange, value, id }) => {
         />
         <label
           htmlFor={`B${id}`}
-          className="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+          className="block cursor-pointer select-none rounded-xl py-1 px-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
         >
           B
         </label>
@@ -50,7 +50,7 @@ const AbcSelect = ({ onChange, value, id }) => {
         />
         <label
           htmlFor={`C${id}`}
-          className="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+          className="block cursor-pointer select-none rounded-xl py-1 px-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
         >
           C
         </label>

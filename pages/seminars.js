@@ -12,11 +12,13 @@ export default function Seminars() {
 
   return (
     <>
-      <div className="container">
+      <div>
         <Card>
           <SeminarForm onSubmit={refreshList} seminarItem={{}} />
         </Card>
-        <SeminarList ref={ListRef} />
+        <div className="w-full mt-4">
+          <SeminarList ref={ListRef} />
+        </div>
       </div>
     </>
   );
