@@ -31,7 +31,7 @@ const NavBar = () => {
           sideBarShow ? "flex" : "hidden"
         } absolute md:relative md:flex w-64 h-screen overflow-y-auto py-4 px-3 bg-gray-50 rounded flex-col`}
       >
-        {profile.current_cycle ? (
+        {profile.current_cycle && profile.current_cycle.length ? (
           <>
             <div className="flex">Ciklas {profile.current_cycle}</div>
 
