@@ -1,13 +1,13 @@
-import fakeSeminars from "../config/texts/fakeSeminars.json";
 import Modal from "./ui/Modal";
 import { useEffect, useState, useImperativeHandle } from "react";
 import { Card, TableItem, TableHeadItem, TableHead, TableBody } from "./ui/ui";
 import { Edit, Delete } from "./ui/icons";
 import SeminarForm from "./SeminarForm";
 import React from "react";
-import supabase from "../config/SupaBaseClient";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const SeminarList = ({}, ref) => {
+  const supabase = useSupabaseClient()
   useImperativeHandle(ref, () => ({
     getSeminars() {
       getSeminars();

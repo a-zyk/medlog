@@ -2,14 +2,14 @@ import { useState, useEffect, useContext } from "react";
 import AbcSelect from "./AbcSelect";
 import validate from "../domain/patientFormErrors";
 import { ErrorWrapper, Button } from "./ui/ui";
-import supabase from "../config/SupaBaseClient";
-import { useUser } from "@supabase/auth-helpers-react";
-import cycleOneDiagnosis from "../config/texts/cycleOne/Diagnosis.json";
-import cycleTwoDiagnosis from "../config/texts/cycleTwo/Diagnosis.json";
-import cycleThreeDiagnosis from "../config/texts/cycleThree/Diagnosis.json";
+import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
+import cycleOneDiagnosis from "../domain/texts/cycleOne/Diagnosis.json";
+import cycleTwoDiagnosis from "../domain/texts/cycleTwo/Diagnosis.json";
+import cycleThreeDiagnosis from "../domain/texts/cycleThree/Diagnosis.json";
 import profileContext from "../domain/profileContext";
 
 const PatientForm = ({ patient, onSubmit }) => {
+  const supabase = useSupabaseClient()
   const user = useUser();
   const {profile} = useContext(profileContext)
   const [pathDx, setPathDx] = useState(patient.pathDx || "");

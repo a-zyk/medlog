@@ -1,13 +1,13 @@
-import data from "../config/texts/cycleOne/Skills.json";
+import data from "../domain/texts/cycleOne/Skills.json";
 import { useState } from "react";
 import AbcSelect from "./AbcSelect";
 import validate from "../domain/skillFormErrors";
 import { Button, ErrorWrapper } from "./ui/ui";
-import supabase from "../config/SupaBaseClient";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const SkillForm = ({ skillItem, onSubmit }) => {
   const user = useUser();
+  const supabase = useSupabaseClient()
   const [abc, setAbc] = useState(skillItem.abc || "");
   const [patientNum, setPatientNum] = useState(skillItem.patient_num || "");
   const currentDate = new Date().toISOString().split("T")[0];

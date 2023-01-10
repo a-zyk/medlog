@@ -4,10 +4,10 @@ import { useEffect, useState, useImperativeHandle } from "react";
 import { Card, TableItem, TableHeadItem, TableHead, TableBody } from "./ui/ui";
 import { Edit, Delete } from "./ui/icons";
 import React from "react";
-import supabase from "../config/SupaBaseClient";
-import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const skillList = ({}, ref) => {
+  const supabase = useSupabaseClient()
   const [skills, setSkills] = useState([]);
   const [editingSkill, setEditingSkill] = useState(null);
 

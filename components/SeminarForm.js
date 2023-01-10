@@ -1,12 +1,12 @@
-import data from "../config/texts/cycleOne/Seminar.json";
+import data from "../domain/texts/cycleOne/Seminar.json";
 import { ErrorWrapper, Button } from "./ui/ui";
 import { useState } from "react";
 import AbcSelect from "./AbcSelect";
 import validate from "../domain/seminarFormError";
-import supabase from "../config/SupaBaseClient";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 const Seminar = ({ seminarItem, onSubmit }) => {
   const user = useUser();
+  const supabase = useSupabaseClient()
   const currentDate = new Date().toISOString().split("T")[0];
   const [seminar, setSeminar] = useState(seminarItem.seminar || "");
   const [date, setDate] = useState(seminarItem.date || currentDate);

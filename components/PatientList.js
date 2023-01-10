@@ -4,10 +4,10 @@ import { useState, useEffect, useImperativeHandle } from "react";
 import Modal from "./ui/Modal";
 import React from "react";
 import PatientForm from "./PatientForm";
-import supabase from "../config/SupaBaseClient";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const patientList = ({}, ref) => {
+  const supabase = useSupabaseClient()
   const user = useUser();
   const [patients, setPatients] = useState([]);
   const [editingPatient, setEditingPatient] = useState(null);
