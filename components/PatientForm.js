@@ -72,6 +72,7 @@ const PatientForm = ({ patient, onSubmit }) => {
           date,
           abc,
           user_id: user.id,
+          cycle: profile.current_cycle
         });
         setTlkCode("");
         setPathDx("");

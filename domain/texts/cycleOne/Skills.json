@@ -9,6 +9,7 @@
   {
     "skill": "Koniotomija",
     "cycle": 1,
+    "A": 0,
     "B": 1,
     "C": 1
   },

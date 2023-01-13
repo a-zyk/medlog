@@ -9,12 +9,13 @@
      "C": 2
     },
     {
-     "pathDx": "Nemedicininės paskirties medžiagų toksinis poveikis ",
+     "pathDx": "Nemedicininės paskirties medžiagų toksinis poveikis",
      "tlkCode": "T51-T65",
      "cycle": 2,
      "min_procedures": 4,
      "A": 2,
-     "B": 1
+     "B": 1,
+     "C": 0
     },
     {
      "pathDx": "Inkstų nepakankamumas",

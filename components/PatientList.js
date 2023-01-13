@@ -8,38 +8,11 @@ import {
   Table,
 } from "./ui/ui";
 import { Edit, Delete } from "./ui/icons";
-import { useState, useEffect, useImperativeHandle } from "react";
-import Modal from "./ui/Modal";
 import React from "react";
-import PatientForm from "./PatientForm";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
-const patientList = ({}, ref) => {
+const patientList = ({ patients, refresh, setEditingPatient }) => {
   const supabase = useSupabaseClient();
-  const [patients, setPatients] = useState([]);
-  const [editingPatient, setEditingPatient] = useState(null);
-
-  useImperativeHandle(ref, () => ({
-    getPatients() {
-      getPatients();
-    },
-  }));
-
-  const getPatients = async () => {
-    const { data, error } = await supabase
-      .from("patients")
-      .select()
-      .order("date", { ascending: false });
-
-    if (data && !error) {
-      setPatients(data);
-    }
-    setEditingPatient(null);
-  };
-
-  useEffect(() => {
-    getPatients();
-  }, []);
 
   const onDeletePatient = async (patient) => {
     const { error } = await supabase
@@ -47,7 +20,7 @@ const patientList = ({}, ref) => {
       .delete()
       .eq("id", patient.id)
       .select();
-    getPatients();
+    refresh();
   };
 
   const rows = patients.map((patient, i) => {
@@ -91,14 +64,8 @@ const patientList = ({}, ref) => {
           </Table>
         </TableWrapper>
       </Card>
-
-      {editingPatient ? (
-        <Modal onModalClose={() => setEditingPatient(null)}>
-          <PatientForm onSubmit={getPatients} patient={editingPatient} />
-        </Modal>
-      ) : null}
     </>
   );
 };
 
-export default React.forwardRef(patientList);
+export default patientList;

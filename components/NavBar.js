@@ -2,16 +2,14 @@ import Link from "next/link";
 import { NavItem } from "./ui/ui";
 import { Menu } from "./ui/icons";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
-import User from "./Profile";
 import { useState, useContext } from "react";
-import Profile from "./Profile";
 import profileContext from "../domain/profileContext";
 
 const NavBar = () => {
   const [sideBarShow, setSideBarShow] = useState(false);
-  const { profile } = useContext(profileContext)
+  const { profile } = useContext(profileContext);
   const client = useSupabaseClient();
-  const user = useUser()
+  const user = useUser();
 
   const signOut = async () => {
     const { error } = await client.auth.signOut();
@@ -46,9 +44,7 @@ const NavBar = () => {
             </Link>
           </>
         ) : (
-          <>
-            <Link href="/profile">Pasirinkti ciklą</Link>
-          </>
+          <Link href="/profile">Pasirinkti ciklą</Link>
         )}
         <div className="flex-grow" />
         <Link href="/profile">

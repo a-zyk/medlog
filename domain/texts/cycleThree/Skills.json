@@ -1,32 +1,37 @@
 [
-   {
-    "skill": "Nazogastrinio \/ orogastrinio zondo įvedimas",
+  {
+    "skill": "Nazogastrinio / orogastrinio zondo įvedimas",
     "A": 15,
+    "B": 0,
+    "C": 0,
     "cycle": "3"
-   },
-   {
+  },
+  {
     "skill": "Įvesti balioninį stemplės zondą (Blekmoro) kraujuojant iš varikozinių mazgų",
     "A": 8,
     "B": 2,
+    "C": 0,
     "cycle": "3"
-   },
-   {
+  },
+  {
     "skill": "Stresinių opų profilaktika",
     "cycle": "3",
     "A": 10,
-    "B": 5
-   },
-   {
+    "B": 5,
+    "C": 0
+  },
+  {
     "skill": "Įvesti enterinio maitinimo zondą į dvylikapirštę",
     "cycle": "3",
     "A": 1,
-    "B": 1
-   },
-   {
+    "B": 1,
+    "C": 0
+  },
+  {
     "skill": "Koloražo skaičiavimas ir mitybos plano sudarymas",
     "cycle": "3",
     "A": 8,
-    "B": 2
-   }
-  ]
-  
+    "B": 2,
+    "C": 0
+  }
+]

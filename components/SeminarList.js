@@ -27,6 +27,7 @@ const SeminarList = ({}, ref) => {
     const { data, error } = await supabase
       .from("seminars")
       .select()
+      .eq("cycle", profile.current_cycle)
       .order("date", { ascending: false });
     if (data && !error) {
       setSeminars(data);

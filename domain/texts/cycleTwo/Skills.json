@@ -37,26 +37,35 @@
     {
      "skill": "Pritaikyti plazmaferezę",
      "cycle": 2,
+     "A": 0,
+     "B": 0,
      "C": 1
     },
     {
      "skill": "Skrandžio ištuštinimas apsinuodijus ",
      "cycle": 2,
-     "A": 12
+     "A": 12,
+     "B": 0,
+     "C": 0
     },
     {
      "skill": "Šlapimo šarminimas",
      "cycle": 2,
-     "A": 4
+     "A": 4,
+     "B": 0,
+     "C": 0
     },
     {
      "skill": "Enterosorbcija",
      "cycle": 2,
-     "A": 10
+     "A": 10,
+     "B": 0,
+     "C": 0
     },
     {
      "skill": "Detoksikacinė hemodializė",
      "cycle": 2,
+     "A": 0,
      "B": 2,
      "C": 1
     }]

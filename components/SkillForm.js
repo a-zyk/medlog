@@ -50,6 +50,7 @@ const SkillForm = ({ skillItem, onSubmit }) => {
             department,
             skill,
             abc,
+
             patient_num: patientNum,
           })
           .eq("id", skillItem.id);
@@ -59,6 +60,7 @@ const SkillForm = ({ skillItem, onSubmit }) => {
           department,
           skill,
           abc,
+          cycle: profile.current_cycle,
           patient_num: patientNum,
           user_id: user.id,
         });
