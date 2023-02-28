@@ -1,11 +1,9 @@
 const skillStats = (skills, cycle) => {
     if (!Object.keys(cycle).length) return {};
-    if (!skills.length) return {}
   
     let stats = {};
     cycle.forEach((skill) => {
       stats[skill.skill] = {
-      
         min_A: skill.A,
         min_B: skill.B,
         min_C: skill.C,

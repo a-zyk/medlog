@@ -62,8 +62,9 @@ export default function Home() {
           refresh={getPatients}
         />
       </div>
-
-      <Statistics stats={stats} />
+      <div className="mt-4">
+        <Statistics stats={stats} />
+      </div>
 
       {editingPatient ? (
         <Modal onModalClose={() => setEditingPatient(null)}>

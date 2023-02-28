@@ -1,10 +1,10 @@
-import SkillForm from "../components/SkillForm";
-import Modal from "../components/ui/Modal";
-import SkillList from "../components/SkillList";
 import { Card } from "../components/ui/ui";
 import { useContext, useState, useEffect } from "react";
-import Statistics from "../components/SkillsStatistics";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import SkillForm from "../components/SkillForm";
+import SkillList from "../components/SkillList";
+import Statistics from "../components/SkillsStatistics";
+import Modal from "../components/ui/Modal";
 import profileContext from "../domain/profileContext";
 import cycleOneSkills from "../domain/texts/cycleOne/Skills.json";
 import cycleTwoSkills from "../domain/texts/cycleTwo/Skills.json";
@@ -18,11 +18,8 @@ export default function Skills() {
   const [skills, setSkills] = useState([]);
   const [editingSkill, setEditingSkill] = useState(null);
   const { profile } = useContext(profileContext);
-  const availableSkills = [
-    cycleOneSkills,
-    cycleTwoSkills,
-    cycleThreeSkills,
-  ];
+  const availableSkills = [cycleOneSkills, cycleTwoSkills, cycleThreeSkills];
+
   const getSkills = async () => {
     const { data, error } = await supabase
       .from("skills")
@@ -60,7 +57,10 @@ export default function Skills() {
             refresh={getSkills}
           />
         </div>
-        <Statistics stats={stats}/>
+        <div className="mt-4">
+          <Statistics stats={stats} />
+        </div>
+
         {editingSkill ? (
           <Modal onModalClose={() => setEditingSkill(null)}>
             <SkillForm onSubmit={getSkills} skillItem={editingSkill} />

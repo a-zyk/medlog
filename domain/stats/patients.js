@@ -1,6 +1,5 @@
 const patientStats = (patients, cycle) => {
   if (!Object.keys(cycle).length) return {};
-  if (!patients.length) return {};
 
   let stats = {};
   cycle.forEach((diagnosis) => {

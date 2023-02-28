@@ -5,12 +5,13 @@ import {
   TableBody,
   TableWrapper,
   Table,
+  Card,
 } from "./ui/ui";
 
 const SkillsStatistics = ({ stats }) => {
   const statsRows = Object.keys(stats).map((skill) => {
     const stat = stats[skill];
-    
+
     return (
       <tr className="whitespace-nowrap" key={skill}>
         <TableItem>{skill}</TableItem>
@@ -28,22 +29,24 @@ const SkillsStatistics = ({ stats }) => {
   });
 
   return (
-    <TableWrapper>
-      <Table>
-        <TableHead>
-          <tr>
-            <th rowSpan="3">Įgudis</th>
-            <th colSpan="3">Sav. lygis</th>
-          </tr>
-          <tr>
-            <TableHeadItem>A</TableHeadItem>
-            <TableHeadItem>B</TableHeadItem>
-            <TableHeadItem>C</TableHeadItem>
-          </tr>
-        </TableHead>
-        <TableBody>{statsRows}</TableBody>
-      </Table>
-    </TableWrapper>
+    <Card>
+      <TableWrapper>
+        <Table>
+          <TableHead>
+            <tr>
+              <th rowSpan="3">Įgudis</th>
+              <th colSpan="3">Sav. lygis</th>
+            </tr>
+            <tr>
+              <TableHeadItem>A</TableHeadItem>
+              <TableHeadItem>B</TableHeadItem>
+              <TableHeadItem>C</TableHeadItem>
+            </tr>
+          </TableHead>
+          <TableBody>{statsRows}</TableBody>
+        </Table>
+      </TableWrapper>
+    </Card>
   );
 };
 

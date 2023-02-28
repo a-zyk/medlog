@@ -37,7 +37,6 @@ const Seminar = ({ seminarItem, onSubmit }) => {
           .update({
             date,
             seminar,
-
             abc,
           })
           .eq("id", seminarItem.id);
@@ -45,9 +44,8 @@ const Seminar = ({ seminarItem, onSubmit }) => {
         const { error } = await supabase.from("seminars").insert({
           date,
           seminar,
-
           abc,
-
+          cycle: profile.current_cycle,
           user_id: user.id,
         });
         setAbc("");

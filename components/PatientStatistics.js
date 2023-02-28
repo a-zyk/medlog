@@ -5,6 +5,7 @@ import {
   TableBody,
   TableWrapper,
   Table,
+  Card,
 } from "./ui/ui";
 
 const PatientStatistics = ({ stats }) => {
@@ -30,23 +31,25 @@ const PatientStatistics = ({ stats }) => {
   });
 
   return (
-    <TableWrapper>
-      <Table>
-        <TableHead>
-          <tr>
-            <th rowSpan="2">Patologija</th>
-            <th rowSpan="2">Pacientų sk.</th>
-            <th colSpan="3">Sav. lygis</th>
-          </tr>
-          <tr>
-            <TableHeadItem>A</TableHeadItem>
-            <TableHeadItem>B</TableHeadItem>
-            <TableHeadItem>C</TableHeadItem>
-          </tr>
-        </TableHead>
-        <TableBody>{statsRows}</TableBody>
-      </Table>
-    </TableWrapper>
+    <Card>
+      <TableWrapper>
+        <Table>
+          <TableHead>
+            <tr>
+              <th rowSpan="2">Patologija</th>
+              <th rowSpan="2">Pacientų sk.</th>
+              <th colSpan="3">Sav. lygis</th>
+            </tr>
+            <tr>
+              <TableHeadItem>A</TableHeadItem>
+              <TableHeadItem>B</TableHeadItem>
+              <TableHeadItem>C</TableHeadItem>
+            </tr>
+          </TableHead>
+          <TableBody>{statsRows}</TableBody>
+        </Table>
+      </TableWrapper>
+    </Card>
   );
 };
 

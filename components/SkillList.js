@@ -1,6 +1,3 @@
-// import Modal from "./ui/Modal";
-import SkillForm from "./SkillForm";
-import { useEffect, useState, useImperativeHandle } from "react";
 import {
   Card,
   TableItem,
